@@ -4,29 +4,27 @@
 set $mod Mod4
 
 ### Application shortcuts
+
+# Restart i3
+bindsym $mod+F12 restart
+
+# Exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# dmenu
+bindsym $mod+space exec --no-startup-id $HOME/.config/i3/scripts/dmenu.sh
+# bindcode $mod+space exec "rofi -modi drun,run -show drun"
+
+# Terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# File manager
 bindsym $mod+F1 exec thunar
+
+# Web browser
 bindsym $mod+F2 exec firefox
 
-### Window settings
-
-# Window font
-#font pango:monospace 8
-font pango:DejaVu Sans Mono 8
-
-# Window colours
-# class                   border    backgr.   text      indicator child_border
-client.focused            #da3450   #da3450   #000000   #da3450   #da3450
-# client.focused_inactive #333333   #5f676a   #ffffff   #484e50   #5f676a
-# client.unfocused        #333333   #222222   #888888   #292d2e   #222222
-# client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
-# client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
-client.background         #000000
-
-# Window border
-default_border pixel 2 
-default_floating_border pixel 2
-
-### Apps installed
+### Applications
 
 # Compositor
 exec_always --no-startup-id picom &
@@ -44,6 +42,30 @@ exec --no-startup-id /usr/libexec/gsd-xsettings &
 # Network manager
 exec --no-startup-id nm-applet
 
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh 
+
+### Window appearance settings
+
+# Window font
+#font pango:monospace 8
+font pango:DejaVu Sans Mono 8
+
+# Window colours
+# class                   border    backgr.   text      indicator child_border
+client.focused            #da3450   #da3450   #000000   #f0c674   #da3450
+# client.focused_inactive #333333   #5f676a   #ffffff   #484e50   #5f676a
+# client.unfocused        #333333   #222222   #888888   #292d2e   #222222
+# client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
+# client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
+client.background         #000000
+
+# Window border
+default_border pixel 2 
+default_floating_border pixel 2
+
+gaps inner 10
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -58,32 +80,17 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# Polybar (top bar)
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+### Window management
 
 # kill focused window
 bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+space exec --no-startup-id $HOME/.config/i3/scripts/dmenu.sh
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-### Window Management
-
-gaps inner 10
 
 # Change focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+focus_follows_mouse no
 
 # Move focused window
 bindsym $mod+Shift+Left move left
@@ -92,9 +99,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Orientation
-# Horizontal
 bindsym $mod+b split h
-# Vertical
 bindsym $mod+v split v
 
 # Window mode
@@ -102,16 +107,11 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-# change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+d floating toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -137,6 +137,9 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
+bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -149,26 +152,26 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-
-# reload the configuration file
-# bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+F12 restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+bracketleft move container to workspace prev
+bindsym $mod+Shift+bracketright move container to workspace next
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
+        # Less height
         bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Shift+Down resize shrink height 50 px or 50 ppt
+
+        # More height
+        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Shift+Up resize grow height 50 px or 50 ppt
+
+        # Less wide
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Shift+Left resize shrink width 50 px or 50 ppt
+
+        # More Wide
         bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Shift+Right resize grow width 50 px or 50 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -178,9 +181,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#	position top
-#    status_command i3status
-#}
+# Multiple screens
+bindsym $mod+comma move workspace to output left
+bindsym $mod+period move workspace to output right
+bindsym $mod+shift+comma move container to output left
+bindsym $mod+shift+period move container to output right
+
+# i3bar (if polybar fails)
+# bar {
+#	  position top
+#     status_command i3status
+# }
