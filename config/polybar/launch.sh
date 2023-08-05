@@ -6,8 +6,8 @@ polybar-msg cmd quit
 
 ### Manually launch bar on all monitors
 
-polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar secondary 2>&1 | tee -a /tmp/polybar1.log & disown
+polybar main -c ~/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar1.log & disown
+# polybar secondary 2>&1 | tee -a /tmp/polybar1.log & disown
 
 # ### Try to launch on all monitors
 # screens=$(xrandr --listactivemonitors | cut -d " " -f 6)
