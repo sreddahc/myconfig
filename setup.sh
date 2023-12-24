@@ -14,6 +14,11 @@ cp -r ./i3 ~/.config/
 sudo apt install -y polybar
 cp -r ./polybar ~/.config/
 
+# Top bar font
+unzip ./fonts/NerdFontsSymbolsOnly.zip ./fonts/
+chmod 644 ./SymbolsNerdFont*
+cp ./SymbolsNerdFont* ~/.local/share/fonts
+
 # Compositor - picom (transparency) [alternative=comptom]
 sudo apt install -y picom
 mkdir ~/.config/picom
