@@ -6,34 +6,37 @@
 ### WINDOW MANAGER ###
 ######################
 
-### Dependencies
-
-# i3 = window manager
-# polybar = top bar
-# feh = required for wallpaper
-# picom = compositor (required for transparency) [alternative=comptom]
-
-sudo apt install -y i3 polybar feh picom
-
-### Setup
-
-# Wallpapers folder
-mkdir ~/Pictures ~/Pictures/wallpapers
-
-# Setup i3, polybar and picom
+# Window manager - i3
+sudo apt install -y i3
 cp -r ./i3 ~/.config/
+
+# Top bar - polybar
+sudo apt install -y polybar
 cp -r ./polybar ~/.config/
+
+# Compositor - picom (transparency) [alternative=comptom]
+sudo apt install -y picom
 mkdir ~/.config/picom
 cp ./picom/picom.conf ~/.config/picom/
+
+# Wallpaper
+sudo apt install -y feh
+mkdir ~/Pictures ~/Pictures/wallpapers
 
 ###############################
 ### WINDOW MANAGER FEATURES ###
 ###############################
 
-# thunar = file manager
-# xfce4-settings (to customise background settings)
-# gnome-screenshot = screenshots
-sudo apt install -y thunar xfce4-settings gnome-screenshot --no-install-recommends
+# File manager - Thunar 
+sudo apt install -y thunar xfce4-settings --no-install-recommends
+
+# gnome-screenshot - screenshots
+sudo apt install -y gnome-screenshot --no-install-recommends
+
+# Notifications
+sudo apt install -y dunst
+mkdir ~/.config/dunst
+cp ./dunst/dunstrc ~/.config/dunst/
 
 ############
 ### TMUX ###
