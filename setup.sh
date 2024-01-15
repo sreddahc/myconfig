@@ -47,6 +47,10 @@ cp ./dunst/dunstrc ~/.config/dunst/
 ### TMUX ###
 ############
 
+# Font
+sudo apt install fonts-powerline
+
+# Config
 cp ./tmux/tmux.conf ~/.tmux.conf
 
 ###########
