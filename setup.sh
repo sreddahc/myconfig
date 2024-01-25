@@ -17,6 +17,7 @@ cp -r ./polybar ~/.config/
 # Top bar font
 unzip ./fonts/NerdFontsSymbolsOnly.zip ./fonts/
 chmod 644 ./SymbolsNerdFont*
+mkdir -p ~/.local/share/fonts
 cp ./SymbolsNerdFont* ~/.local/share/fonts
 
 # Compositor - picom (transparency) [alternative=comptom]
