@@ -49,7 +49,7 @@ cp ./dunst/dunstrc ~/.config/dunst/
 ############
 
 # Font
-sudo apt install fonts-powerline
+sudo apt install -y fonts-powerline tmux
 
 # Config
 cp ./tmux/tmux.conf ~/.tmux.conf
@@ -60,4 +60,4 @@ cp ./tmux/tmux.conf ~/.tmux.conf
 
 # Setup vim
 sudo apt install vim
-cp ./vimrc ~/.vimrc
+cp ./vim/vimrc ~/.vimrc
