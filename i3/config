@@ -1,6 +1,9 @@
 # i3 documentation: https://i3wm.org/docs/userguide.html
 
 # Mod key
+# Alt
+# set $mod Mod1
+# Super
 set $mod Mod4
 
 ### Application shortcuts
@@ -86,6 +89,10 @@ tiling_drag modifier titlebar
 bindsym $mod+q kill
 
 # Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -93,6 +100,10 @@ bindsym $mod+Right focus right
 focus_follows_mouse no
 
 # Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -158,18 +169,26 @@ bindsym $mod+Shift+bracketright move container to workspace next
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # Less height
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym Shift+k resize shrink height 50 px or 50 ppt
         bindsym Down resize shrink height 10 px or 10 ppt
         bindsym Shift+Down resize shrink height 50 px or 50 ppt
 
         # More height
+        bindsym l resize grow height 10 px or 10 ppt
+        bindsym Shift+l resize grow height 50 px or 50 ppt
         bindsym Up resize grow height 10 px or 10 ppt
         bindsym Shift+Up resize grow height 50 px or 50 ppt
 
         # Less wide
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym Shift+j resize shrink width 50 px or 50 ppt
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Shift+Left resize shrink width 50 px or 50 ppt
 
         # More Wide
+        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym Shift+semicolon resize grow width 50 px or 50 ppt
         bindsym Right resize grow width 10 px or 10 ppt
         bindsym Shift+Right resize grow width 50 px or 50 ppt
 
