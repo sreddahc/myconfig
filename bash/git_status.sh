@@ -19,7 +19,6 @@ git_status(){
     local unmerged="="
     local ahead="▲"
     local behind="▼"
-    local diverged="÷"
 
     # Initialise
     local STATUS=$(command git status --porcelain -b 2>/dev/null)
@@ -70,13 +69,19 @@ git_status(){
         state="$state$unmerged"
     elif $(echo "$INDEX" | command grep -q '^[DA]U '); then
         state="$state$unmerged"
+    fi  
+
+    # Check if branch is ahead
+    if [ $(command git rev-list --count ${git_branch}@{upstream}..HEAD 2>/dev/null) -ne 0 ]; then
+        state="$state$ahead"
     fi
 
-    # Check if branch is ahead/behind
+    # Check if branch is behind
+    if [ $(command git rev-list --count HEAD..${git_branch}@{upstream} 2>/dev/null) -ne 0 ]; then
+        state="$state$behind"
+    fi
 
-
-    # Check if branch has diverged
-
+    # Diverged if both ahead and behind
 
     # Return
     echo "$state"
