@@ -17,6 +17,9 @@ git_status(){
     local deleted="×"
     local stashed="$"
     local unmerged="="
+    local ahead="▲"
+    local behind="▼"
+    local diverged="÷"
 
     # Initialise
     local STATUS=$(command git status --porcelain -b 2>/dev/null)
