@@ -84,7 +84,7 @@ git_status(){
     if [ -n "$state" ]; then
         echo "$git_icon $repository $state"
     else
-        echo echo "$git_icon $repository"
+        echo "$git_icon $repository"
     fi
 
 }
