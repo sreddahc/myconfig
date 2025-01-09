@@ -1,15 +1,11 @@
 #!/bin/sh
 
-### Key
-# ? = Untracked changes
-# + = Staged files
-
-
 # Source: https://github.com/spaceship-prompt/spaceship-prompt/blob/master/sections/git_status.zsh
 
 git_status(){
 
     # Key
+    local git_icon="🔀"
     local untracked="\033[00;93m\]?\[\033[00m\]"
     local added="\033[00;92m\]+\[\033[00m\]"
     local modified="\033[00;93m\]!\[\033[00m\]"
@@ -21,6 +17,7 @@ git_status(){
     local behind="\[\033[00;91m\]▼\[\033[00m\]"
 
     # Initialise
+    local repository="$(git rev-parse --abbrev-ref HEAD)"
     local STATUS=$(command git status --porcelain -b 2>/dev/null)
     local state=""
 
@@ -84,10 +81,10 @@ git_status(){
     # Diverged if both ahead and behind
 
     # Return
-    if [ "$state" = "" ]; then
-        echo ""
+    if [ -n "$state" ]; then
+        echo "$git_icon $repository $state"
     else
-        echo " $state"
+        echo echo "$git_icon $repository"
     fi
 
 }

@@ -34,10 +34,16 @@ update_status () {
         # Directory
         PS1+='[ \[\033[01;34m\]📁 \w\[\033[00m\] ]'
 
+        # Python
+        if [[ -n "${VIRTUAL_ENV}" ]]; then
+            new_line_check
+            PS1+="[ $(command sh ~/.bashrc.d/status/python_status.sh) ]"
+        fi
+
         # Git
         if [ $(git rev-parse --is-in-work-tree 2>/dev/null) ]; then 
             new_line_check
-            PS1+="[ 🔀 $(git rev-parse --abbrev-ref HEAD)$(command sh ~/.bashrc.d/status/git_status.sh) ]"
+            PS1+="[ $(command sh ~/.bashrc.d/status/git_status.sh) ]"
             
         fi
         # End
