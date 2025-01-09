@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# This script customised the output for PS1
-
-local newline=0
+# This script customises the PS1 environment variable for pretty prompts
 
 new_line_check () {
     if [[ $newline -eq 0 ]]; then
@@ -49,15 +47,15 @@ update_status () {
         # End
         PS1+='\n└ $ '
 
-    # else
+    # else        
 
     fi
 
     unset color_prompt
+    unset newline
 
 }
 
-unset newline
 # Update the PS1 variable then ensure it always stays up to date
 update_status
 PROMPT_COMMAND="update_status"
