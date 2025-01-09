@@ -10,15 +10,15 @@
 git_status(){
 
     # Key
-    local untracked="?"
-    local added="+"
-    local modified="!"
-    local renamed=">"
-    local deleted="×"
-    local stashed="$"
-    local unmerged="="
-    local ahead="▲"
-    local behind="▼"
+    local untracked="\033[00;93m\]?\[\033[00m\]"
+    local added="\033[00;92m\]+\[\033[00m\]"
+    local modified="\033[00;93m\]!\[\033[00m\]"
+    local renamed="\033[00;92m\]>\[\033[00m\]"
+    local deleted="\[\033[00;91m\]✕\[\033[00m\]"
+    local stashed="\[\033[00;96m\]$\[\033[00m\]"
+    local unmerged="\[\033[00;91m\]=\[\033[00m\]"
+    local ahead="\[\033[00;92m\]▲\[\033[00m\]"
+    local behind="\[\033[00;91m\]▼\[\033[00m\]"
 
     # Initialise
     local STATUS=$(command git status --porcelain -b 2>/dev/null)
