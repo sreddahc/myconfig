@@ -37,7 +37,7 @@ update_status () {
         # Git
         if [ $(git rev-parse --is-in-work-tree 2>/dev/null) ]; then 
             new_line_check
-            PS1+="[ 🔀 $(git rev-parse --abbrev-ref HEAD) $(command sh ~/.bashrc.d/status/git_status.sh) ]"
+            PS1+="[ 🔀 $(git rev-parse --abbrev-ref HEAD)$(command sh ~/.bashrc.d/status/git_status.sh) ]"
             
         fi
         # End

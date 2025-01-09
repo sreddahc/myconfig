@@ -84,7 +84,11 @@ git_status(){
     # Diverged if both ahead and behind
 
     # Return
-    echo "$state"
+    if [ "$state" = "" ]; then
+        echo ""
+    else
+        echo " $state"
+    fi
 
 }
 
