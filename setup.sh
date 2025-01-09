@@ -61,3 +61,15 @@ cp ./tmux/tmux.conf ~/.tmux.conf
 # Setup vim
 sudo apt install vim
 cp ./vim/vimrc ~/.vimrc
+
+########
+# BASH #
+########
+
+# # Fix this!
+
+# # Add custom bash
+# for file in ~/.bashrc.d/*.bashrc;
+# do
+# source "$file"
+# done
