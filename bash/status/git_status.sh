@@ -68,17 +68,20 @@ git_status(){
         state="$state$unmerged"
     fi  
 
-    # Check if branch is ahead
-    if [ $(command git rev-list --count ${git_branch}@{upstream}..HEAD 2>/dev/null) -ne 0 ]; then
-        state="$state$ahead"
-    fi
+    # Check if upstream branch exists
+    if [ -n "$(command git rev-parse --abbrev-ref ${git_branch}@{upstream} 2>/dev/null)" ]; then
 
-    # Check if branch is behind
-    if [ $(command git rev-list --count HEAD..${git_branch}@{upstream} 2>/dev/null) -ne 0 ]; then
-        state="$state$behind"
-    fi
+        # Check if branch is ahead
+        if [ $(command git rev-list --count ${git_branch}@{upstream}..HEAD 2>/dev/null) -ne 0 ]; then
+            state="$state$ahead"
+        fi
 
-    # Diverged if both ahead and behind
+        # Check if branch is behind
+        if [ $(command git rev-list --count HEAD..${git_branch}@{upstream} 2>/dev/null) -ne 0 ]; then
+            state="$state$behind"
+        fi
+    
+    fi
 
     # Return
     if [ -n "$state" ]; then
