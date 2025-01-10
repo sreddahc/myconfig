@@ -66,10 +66,18 @@ cp ./vim/vimrc ~/.vimrc
 # BASH #
 ########
 
-# # Fix this!
+# Config
+mkdir -p ~/.bashrc.d
+cp -r ./bash/bashrc.d/* ~/.bashrc.d
 
-# # Add custom bash
-# for file in ~/.bashrc.d/*.bashrc;
-# do
-# source "$file"
-# done
+# Add to .bashrc
+if [ -z "$(command cat ~/.bashrc | command grep '# myconfig - bashrc customisations')" ]; then
+
+    echo '
+# myconfig - bashrc customisations
+for file in ~/.bashrc.d/*.bashrc;
+do
+source "$file"
+done' >> ~/.bashrc
+
+fi
