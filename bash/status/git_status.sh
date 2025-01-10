@@ -18,6 +18,7 @@ git_status(){
 
     # Initialise
     local repository="$(git rev-parse --abbrev-ref HEAD)"
+    local commit_id=" \033[00;93m\]$(command git rev-parse --short HEAD | command head -c7)\[\033[00m\]"
     local STATUS=$(command git status --porcelain -b 2>/dev/null)
     local state=""
 
@@ -85,9 +86,9 @@ git_status(){
 
     # Return
     if [ -n "$state" ]; then
-        echo "$git_icon $repository $state"
+        echo "$git_icon$commit_id $repository $state"
     else
-        echo "$git_icon $repository"
+        echo "$git_icon$commit_id $repository"
     fi
 
 }
