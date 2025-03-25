@@ -59,7 +59,7 @@ cp ./tmux/tmux.conf ~/.tmux.conf
 ###########
 
 # Setup vim
-sudo apt install vim
+sudo -y apt install vim
 cp ./vim/vimrc ~/.vimrc
 
 ########
@@ -86,4 +86,4 @@ fi
 # XMODMAP (KEYBOARD MAPPINGS) #
 ###############################
 
-cp -f ./xmodmap/Xmodmap ~/.Xmodmap
+cp ./xmodmap/Xmodmap ~/.Xmodmap
