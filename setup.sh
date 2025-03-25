@@ -81,3 +81,9 @@ source "$file"
 done' >> ~/.bashrc
 
 fi
+
+###############################
+# XMODMAP (KEYBOARD MAPPINGS) #
+###############################
+
+cp -f ./xmodmap/Xmodmap ~/.Xmodmap
