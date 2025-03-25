@@ -59,7 +59,7 @@ cp ./tmux/tmux.conf ~/.tmux.conf
 ###########
 
 # Setup vim
-sudo apt install vim
+sudo -y apt install vim
 cp ./vim/vimrc ~/.vimrc
 
 ########
@@ -81,3 +81,9 @@ source "$file"
 done' >> ~/.bashrc
 
 fi
+
+###############################
+# XMODMAP (KEYBOARD MAPPINGS) #
+###############################
+
+cp ./xmodmap/Xmodmap ~/.Xmodmap
