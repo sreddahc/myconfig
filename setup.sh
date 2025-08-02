@@ -10,9 +10,10 @@ if [ $(cat /etc/os-release | grep ^ID | cut -f 2 -d "=") = "fedora" ]; then
     sudo dnf install -y pipx python3-libdnf5
 fi
 pipx ensurepath
+source ~/.bashrc
 
 # Install Ansible
-pipx install --include-deps ansible # If missing
+pipx install --include-deps ansible
 
 # Run Ansible
 cd ./ansible
