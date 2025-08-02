@@ -1,4 +1,16 @@
 ---
+- name: Update software repository (Debian)
+  ansible.builtin.apt:
+    update_cache: true
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Update software repository (RedHat)
+  ansible.builtin.dnf:
+    update_cache: true
+  become: true
+  when: ansible_os_family == "RedHat"
+
 - name: Configure terminal
   ansible.builtin.include_role:
     name: linux-terminal

@@ -3,7 +3,6 @@
   ansible.builtin.apt:
     name: i3
     state: present
-    update_cache: true
   become: true
   when: ansible_os_family == "Debian"
 
@@ -13,7 +12,6 @@
       - gnome-session-xsession
       - i3
     state: present
-    update_cache: true
   become: true
   when: ansible_os_family == "RedHat"
 

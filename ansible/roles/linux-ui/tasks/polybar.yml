@@ -3,7 +3,6 @@
   ansible.builtin.apt:
     name: polybar
     state: present
-    update_cache: true
   become: true
   when: ansible_os_family == "Debian"
 
@@ -11,7 +10,6 @@
   ansible.builtin.dnf:
     name: polybar
     state: present
-    update_cache: true
   become: true
   when: ansible_os_family == "RedHat"
 
