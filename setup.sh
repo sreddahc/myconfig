@@ -22,24 +22,8 @@ sudo apt install -y thunar xfce4-settings --no-install-recommends
 # gnome-screenshot - screenshots
 sudo apt install -y gnome-screenshot --no-install-recommends
 
-############
-### TMUX ###
-############
-
 # Font
 sudo apt install -y fonts-powerline tmux
-
-# Config
-cp ./tmux/tmux.conf ~/.tmux.conf
-
-###########
-### VIM ###
-###########
-
-# Setup vim
-sudo apt -y install vim
-# sudo dnf -y install vim-enhanced
-cp ./vim/vimrc ~/.vimrc
 
 ########
 # BASH #

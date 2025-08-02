@@ -4,3 +4,6 @@
 
 - name: Install tmux
   ansible.builtin.include_tasks: tmux.yml
+
+- name: Install vim
+  ansible.builtin.include_tasks: vim.yml
