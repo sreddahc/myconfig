@@ -16,7 +16,6 @@
     prepend_newline: true
     block: |
       # myconfig - bashrc customisations
-      for file in ~/.bashrc.d/*.bashrc;
-      do
-      source "$file"
-      done' >> ~/.bashrc
+      for file in ~/.bashrc.d/*.bashrc; do
+        source "$file"
+      done
