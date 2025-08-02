@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+
+  - name: Setup environment - Linux
+    ansible.builtin.include_role:
+      name: linux
+    when: ansible_os_family == "Debian"

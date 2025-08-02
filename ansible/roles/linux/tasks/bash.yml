@@ -1,0 +1,6 @@
+---
+- name: Bash - Create bashrc.d folder
+  ansible.builtin.file:
+    path: ~/.bashrc.d
+    state: directory
+  # debug: msg="{{ ansible_os_family}}"
