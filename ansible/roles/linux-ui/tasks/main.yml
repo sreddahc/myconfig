@@ -1,2 +1,6 @@
 ---
-- ansible.builtin.include_tasks: i3.yml
+- name: Install terminal emulator
+  ansible.builtin.include_tasks: terminal.yml
+
+- name: Install i3
+  ansible.builtin.include_tasks: i3.yml

@@ -1,8 +1,8 @@
 ---
-- ansible.builtin.include_tasks: bash.yml
-
-- ansible.builtin.include_role:
+- name: Configure terminal
+  ansible.builtin.include_role:
     name: linux-terminal
 
-- ansible.builtin.include_role:
+- name: Configure desktop environment
+  ansible.builtin.include_role:
     name: linux-ui
