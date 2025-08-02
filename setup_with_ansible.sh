@@ -4,6 +4,7 @@
 
 # Install dependencies of Ansible
 # apt install -y git pipx # If missing
+# dnf install -y pipx
 # pipx ensurepath # If not in PATH
 
 # Install Ansible

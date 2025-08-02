@@ -24,3 +24,4 @@
   ansible.builtin.copy:
     src: files/bash/
     dest: ~/.bashrc.d/
+  when: ansible_os_family == "Debian"

@@ -59,7 +59,8 @@ cp ./tmux/tmux.conf ~/.tmux.conf
 ###########
 
 # Setup vim
-sudo -y apt install vim
+sudo apt -y install vim
+# sudo dnf -y install vim-enhanced
 cp ./vim/vimrc ~/.vimrc
 
 ########
