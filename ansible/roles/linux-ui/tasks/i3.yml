@@ -40,3 +40,6 @@
 
 - name: Install wallpaper
   ansible.builtin.include_tasks: feh.yml
+
+- name: Install notifications
+  ansible.builtin.include_tasks: dunst.yml

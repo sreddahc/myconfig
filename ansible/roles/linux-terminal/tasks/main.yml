@@ -1,3 +1,6 @@
 ---
 - name: Configure bash
   ansible.builtin.include_tasks: bash.yml
+
+- name: Install tmux
+  ansible.builtin.include_tasks: tmux.yml
