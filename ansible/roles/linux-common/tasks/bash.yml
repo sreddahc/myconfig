@@ -7,6 +7,16 @@
     path: ~/.bashrc.d
     state: directory
   
-# - name: Bash [2/?] - Add config to .bashrc
-
-  
+- name: Bash [2/?] - Add config to .bashrc
+  ansible.builtin.blockinfile:
+    path: ~/.bashrc
+    create: true
+    state: present
+    append_newline: true
+    prepend_newline: true
+    block: |
+      # myconfig - bashrc customisations
+      for file in ~/.bashrc.d/*.bashrc;
+      do
+      source "$file"
+      done' >> ~/.bashrc
