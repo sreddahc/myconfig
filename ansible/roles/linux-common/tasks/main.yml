@@ -3,12 +3,14 @@
   ansible.builtin.apt:
     update_cache: true
   become: true
+  ignore_errors: true
   when: ansible_os_family == "Debian"
 
 - name: Update software repository (RedHat)
   ansible.builtin.dnf:
     update_cache: true
   become: true
+  ignore_errors: true
   when: ansible_os_family == "RedHat"
 
 - name: Configure terminal
