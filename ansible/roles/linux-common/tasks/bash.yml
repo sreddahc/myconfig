@@ -1,0 +1,12 @@
+---
+# - name: Bash - Check if already setup
+#   ansible.builtin.debug: "lol"
+
+- name: Bash [1/?] - Create .bashrc.d folder
+  ansible.builtin.file:
+    path: ~/.bashrc.d
+    state: directory
+  
+# - name: Bash [2/?] - Add config to .bashrc
+
+  

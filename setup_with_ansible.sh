@@ -4,6 +4,7 @@
 
 # Install dependencies of Ansible
 apt install pipx
+pipx ensurepath
 
 # Install Ansible
 pipx install --include-deps ansible
