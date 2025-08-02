@@ -16,11 +16,6 @@ if [ $(cat /etc/os-release | grep ^ID | cut -f 2 -d "=") = "ubuntu" ]; then
     sudo apt install -y git pipx
 fi
 pipx ensurepath
-PATH=$PATH:~/local/bin
-
-# Install Ansible
-pipx install --include-deps ansible
 
 # Run Ansible
-cd ./ansible
-ansible-playbook site.yml --ask-become-pass
+.install_with_ansible
