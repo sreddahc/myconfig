@@ -11,4 +11,4 @@
 
 # Run Ansible
 cd ./ansible
-ansible-playbook site.yml
+ansible-playbook site.yml --ask-become-pass
