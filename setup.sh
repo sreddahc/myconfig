@@ -1,7 +1,15 @@
 #!/bin/sh
 
-# Script to setup applications I like to use how I like to use them.
+# Script to setup a system how I like to use it.
 
-######################
-### WINDOW MANAGER ###
-######################
+# Install dependencies of Ansible
+# sudo apt install -y git pipx # If missing
+# sudo dnf install -y pipx python3-libdnf5
+# pipx ensurepath # If not in PATH
+
+# Install Ansible
+# pipx install --include-deps ansible # If missing
+
+# Run Ansible
+cd ./ansible
+ansible-playbook site.yml --ask-become-pass
