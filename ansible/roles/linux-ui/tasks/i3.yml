@@ -34,4 +34,8 @@
     mode: "0755"
     recurse: true
 
-- ansible.builtin.include_tasks: polybar.yml
+- name: Install Top Menu
+  ansible.builtin.include_tasks: polybar.yml
+
+- name: Install Compositor
+  ansible.builtin.include_tasks: picom.yml
