@@ -30,7 +30,7 @@ bindsym $mod+F2 exec firefox
 ### Applications
 
 # Compositor
-exec_always --no-startup-id picom --backend glx &
+exec_always --no-startup-id picom &
 
 # Wallpaper
 exec_always --no-startup-id feh --bg-scale --randomize ~/Pictures/wallpapers
