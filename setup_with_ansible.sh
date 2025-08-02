@@ -3,11 +3,12 @@
 # Script to setup a system how I like to use it.
 
 # Install dependencies of Ansible
-apt install pipx
-pipx ensurepath
+# apt install -y git pipx # If missing
+# pipx ensurepath # If not in PATH
 
 # Install Ansible
-pipx install --include-deps ansible
+# pipx install --include-deps ansible # If missing
 
 # Run Ansible
-ansible-playbook ansible/site.yml
+cd ./ansible
+ansible-playbook site.yml
