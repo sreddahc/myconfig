@@ -1,6 +1,6 @@
 # Extra software that i3 uses, but that don't deserve their own ansible file.
 ---
-- name: i3 - Extra [1/1] - Additional software (Debian)
+- name: i3 additional software [1/1] - Install (Debian)
   ansible.builtin.apt:
     name:
       - thunar
@@ -11,7 +11,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: i3 - Extra [1/1] - Additional software (RedHat)
+- name: i3 additional software [1/1] - Install (RedHat)
   ansible.builtin.dnf:
     name:
       - thunar

@@ -45,4 +45,4 @@
   ansible.builtin.include_tasks: dunst.yml
 
 - name: i3 - Additional software
-  ansible.builtin.include_tasks: i3-additional.yml
+  ansible.builtin.include_tasks: i3-additional-software.yml
