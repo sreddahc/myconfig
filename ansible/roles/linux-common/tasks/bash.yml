@@ -16,9 +16,9 @@
       for file in ~/.bashrc.d/*.bashrc; do
         source "$file"
       done
+  when: ansible_os_family == "Debian"
 
 - name: Bash [3/3] - Copy bashrc plugins
   ansible.builtin.copy:
     src: files/bash/
     dest: ~/.bashrc.d/
-  when: ansible_os_family == "Debian"
