@@ -32,14 +32,17 @@
     mode: "0755"
     recurse: true
 
-- name: Install top bar
+- name: i3 - Top bar
   ansible.builtin.include_tasks: polybar.yml
 
-- name: Install compositor
+- name: i3 - Compositor
   ansible.builtin.include_tasks: picom.yml
 
-- name: Install wallpaper
+- name: i3 - Wallpaper
   ansible.builtin.include_tasks: feh.yml
 
-- name: Install notifications
+- name: i3 - Notifications
   ansible.builtin.include_tasks: dunst.yml
+
+- name: i3 - Additional software
+  ansible.builtin.include_tasks: i3-additional.yml

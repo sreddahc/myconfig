@@ -16,12 +16,6 @@ cp ./SymbolsNerdFont* ~/.local/share/fonts
 ### WINDOW MANAGER FEATURES ###
 ###############################
 
-# File manager - Thunar 
-sudo apt install -y thunar xfce4-settings --no-install-recommends
-
-# gnome-screenshot - screenshots
-sudo apt install -y gnome-screenshot --no-install-recommends
-
 # Font
 sudo apt install -y fonts-powerline tmux
 
