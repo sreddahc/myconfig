@@ -1,0 +1,22 @@
+---
+- name: tmux [1/2] - Install (Debian)
+  ansible.builtin.apt:
+    name: tmux
+    state: present
+    update_cache: true
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: tmux [1/2] - Install (RedHat)
+  ansible.builtin.dnf:
+    name: tmux
+    state: present
+    update_cache: true
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: i3 [2/2] - Copy configuration files
+  ansible.builtin.copy:
+    src: files/tmux/
+    dest: ~/
+    mode: "0644"
