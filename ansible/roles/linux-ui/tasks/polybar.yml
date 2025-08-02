@@ -1,0 +1,33 @@
+---
+- name: Polybar [1/?] - Install (Debian)
+  ansible.builtin.apt:
+    name: polybar
+    state: present
+    update_cache: true
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Polybar [1/?] - Install (RedHat)
+  ansible.builtin.dnf:
+    name:
+      - polybar
+    state: present
+    update_cache: true
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: Polybar [2/4] - Ensure required paths exist
+  ansible.builtin.file:
+    path: ~/.config/polybar
+    state: directory
+
+- name: Polybar [3/?] - Configure
+  ansible.builtin.copy:
+    src: files/polybar/
+    dest: ~/.config/polybar/
+    mode: "0644"
+
+- name: Polybar [4/4] - Update file permissions
+  ansible.builtin.file:
+    path: files/polybar/launch.sh
+    mode: "0755"

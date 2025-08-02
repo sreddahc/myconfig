@@ -1,0 +1,3 @@
+---
+- name: Install preferred terminal
+  ansible.builtin.include_tasks: terminal.yml
