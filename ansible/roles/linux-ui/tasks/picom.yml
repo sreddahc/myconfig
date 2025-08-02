@@ -9,8 +9,7 @@
 
 - name: picom [1/3] - Install (RedHat)
   ansible.builtin.dnf:
-    name:
-      - picom
+    name: picom
     state: present
     update_cache: true
   become: true

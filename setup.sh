@@ -6,24 +6,11 @@
 ### WINDOW MANAGER ###
 ######################
 
-# Window manager - i3
-sudo apt install -y i3
-cp -r ./i3 ~/.config/
-
-# Top bar - polybar
-sudo apt install -y polybar
-cp -r ./polybar ~/.config/
-
 # Top bar font
 unzip ./fonts/NerdFontsSymbolsOnly.zip ./fonts/
 chmod 644 ./SymbolsNerdFont*
 mkdir -p ~/.local/share/fonts
 cp ./SymbolsNerdFont* ~/.local/share/fonts
-
-# Compositor - picom (transparency) [alternative=comptom]
-sudo apt install -y picom
-mkdir ~/.config/picom
-cp ./picom/picom.conf ~/.config/picom/
 
 # Wallpaper
 sudo apt install -y feh

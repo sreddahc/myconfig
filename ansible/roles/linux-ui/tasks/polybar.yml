@@ -9,8 +9,7 @@
 
 - name: Polybar [1/4] - Install (RedHat)
   ansible.builtin.dnf:
-    name:
-      - polybar
+    name: polybar
     state: present
     update_cache: true
   become: true
