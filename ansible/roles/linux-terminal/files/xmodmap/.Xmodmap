@@ -1,6 +1,6 @@
 !This is the settings to be set in Xmodmap for all setups
 
-! Default (for reference)
+!Default (for reference)
 !shift       Shift_L (0x32),  Shift_R (0x3e)
 !lock        Caps_Lock (0x42)
 !control     Control_L (0x25),  Control_R (0x69)

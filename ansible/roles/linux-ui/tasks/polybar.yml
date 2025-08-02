@@ -1,30 +1,33 @@
 ---
-- name: Polybar [1/4] - Install (Debian)
+- name: Polybar [1/5] - Install (Debian)
   ansible.builtin.apt:
     name: polybar
     state: present
   become: true
   when: ansible_os_family == "Debian"
 
-- name: Polybar [1/4] - Install (RedHat)
+- name: Polybar [1/5] - Install (RedHat)
   ansible.builtin.dnf:
     name: polybar
     state: present
   become: true
   when: ansible_os_family == "RedHat"
 
-- name: Polybar [2/4] - Ensure required paths exist
+- name: Polybar [2/5] - Ensure required paths exist
   ansible.builtin.file:
     path: ~/.config/polybar
     state: directory
 
-- name: Polybar [3/4] - Configure
+- name: Polybar [3/5] - Configure
   ansible.builtin.copy:
     src: files/polybar/
     dest: ~/.config/polybar/
     mode: "0644"
 
-- name: Polybar [4/4] - Update file permissions
+- name: Polybar [4/5] - Update file permissions
   ansible.builtin.file:
     path: ~/.config/polybar/launch.sh
     mode: "0755"
+
+- name: Polybar [5/5] - [Optional] Install Font
+  ansible.builtin.include_tasks: nerdfonts.yml

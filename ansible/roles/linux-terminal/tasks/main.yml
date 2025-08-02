@@ -7,3 +7,9 @@
 
 - name: Install vim
   ansible.builtin.include_tasks: vim.yml
+
+- name: Configure Xmodmap
+  ansible.builtin.include_tasks: xmodmap.yml
+
+- name: Install font
+  ansible.builtin.include_tasks: powerline.yml
