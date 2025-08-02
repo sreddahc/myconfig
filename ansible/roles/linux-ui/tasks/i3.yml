@@ -4,6 +4,7 @@
     name: i3
     state: present
     update_cache: yes
+  become: true
 
 - name: i3 [2/?] - Add required directories
   ansible.builtin.file:
