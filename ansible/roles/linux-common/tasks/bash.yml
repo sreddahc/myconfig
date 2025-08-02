@@ -1,7 +1,4 @@
 ---
-# - name: Bash - Check if already setup
-#   ansible.builtin.debug: "lol"
-
 - name: Bash [1/3] - Create bashrc plugin folder
   ansible.builtin.file:
     path: ~/.bashrc.d

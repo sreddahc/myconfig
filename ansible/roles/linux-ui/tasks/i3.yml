@@ -9,7 +9,9 @@
 
 - name: i3 [1/3] - Install (RedHat)
   ansible.builtin.dnf:
-    name: i3 gnome-session-xsession
+    name:
+      - gnome-session-xsession
+      - i3
     state: present
     update_cache: true
   become: true
