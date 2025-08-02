@@ -12,10 +12,6 @@ chmod 644 ./SymbolsNerdFont*
 mkdir -p ~/.local/share/fonts
 cp ./SymbolsNerdFont* ~/.local/share/fonts
 
-# Wallpaper
-sudo apt install -y feh
-mkdir ~/Pictures ~/Pictures/wallpapers
-
 ###############################
 ### WINDOW MANAGER FEATURES ###
 ###############################
