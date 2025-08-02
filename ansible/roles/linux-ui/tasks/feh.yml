@@ -20,9 +20,9 @@
     path: ~/Pictures/wallpapers
     state: directory
 
-- name: feh [3/3] - [Optional] Add default background
+- name: feh [3/3] - Add default background
   ansible.builtin.copy:
-    src: /usr/share/backgrounds/gnome/adwaita-d.webp
-    dest: ~/Pictures/wallpapers/
+    src: files/wallpaper/Izzet_Wallpaper_2560x1440.jpg
+    dest: ~/Pictures/wallpapers/izzet.jpg
     mode: "0644"
   ignore_errors: true

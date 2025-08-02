@@ -34,7 +34,7 @@
     mode: "0755"
     recurse: true
 
-- name: Install top menu
+- name: Install top bar
   ansible.builtin.include_tasks: polybar.yml
 
 - name: Install compositor
