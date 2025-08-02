@@ -30,7 +30,8 @@
 
 - name: i3 [4/4] - Update file permissions
   ansible.builtin.file:
-    path: files/i3/scripts/dmenu.sh
+    path: ~/.config/i3/scripts/
     mode: "0755"
+    recurse: true
 
 - ansible.builtin.include_tasks: polybar.yml
