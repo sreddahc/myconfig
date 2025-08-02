@@ -18,4 +18,4 @@ fi
 pipx ensurepath
 
 # Run Ansible
-.install_with_ansible
+sh .install_with_ansible.sh
