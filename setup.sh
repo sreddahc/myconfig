@@ -16,7 +16,7 @@ if [ $(cat /etc/os-release | grep ^ID | cut -f 2 -d "=") = "ubuntu" ]; then
     sudo apt install -y git pipx
 fi
 pipx ensurepath
-export PATH=$PATH:~/local/bin
+PATH=$PATH:~/local/bin
 
 # Install Ansible
 pipx install --include-deps ansible
