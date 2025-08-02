@@ -2,7 +2,7 @@
 # - name: Bash - Check if already setup
 #   ansible.builtin.debug: "lol"
 
-- name: Bash [1/?] - Create .bashrc.d folder
+- name: Bash [1/?] - Create bashrc plugin folder
   ansible.builtin.file:
     path: ~/.bashrc.d
     state: directory
@@ -19,3 +19,8 @@
       for file in ~/.bashrc.d/*.bashrc; do
         source "$file"
       done
+
+- name: Bash [3/?] - Copy bashrc plugins
+  ansible.builtin.copy:
+    src: files/bash/
+    dest: ~/.bashrc.d/
