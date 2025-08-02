@@ -1,0 +1,16 @@
+---
+- name: i3 [1/?] - Install
+  ansible.builtin.apt:
+    name: i3
+    state: present
+    update_cache: yes
+
+- name: i3 [2/?] - Add required directories
+  ansible.builtin.file:
+    path: ~/.config/i3
+    state: directory
+
+- name: i3 [3/?] - Copy configuration files
+  ansible.builtin.copy:
+    src: files/i3/
+    dest: ~/.config/i3/
