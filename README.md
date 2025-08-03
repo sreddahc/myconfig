@@ -2,6 +2,14 @@
 
 Contains configuration files for how I like my Linux/Unix applications to be set up.
 
+# How to install
+
+1. Clone this repository
+1. Navigate to the directory: `cd myconfig`
+1. Run the setup script: `./setup.bash`
+
+A restart may be required after the script has finished being run.
+
 # Applications
 
 ## Dunst
