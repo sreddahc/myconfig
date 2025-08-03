@@ -1,0 +1,22 @@
+# Extra software that i3 uses, but that don't deserve their own ansible file.
+---
+- name: i3 additional software [1/1] - Install (Debian)
+  ansible.builtin.apt:
+    name:
+      - thunar
+      - xfce4-settings
+      - gnome-screenshot
+    state: present
+    install_recommends: false
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: i3 additional software [1/1] - Install (RedHat)
+  ansible.builtin.dnf:
+    name:
+      - thunar
+      - xfce4-settings
+      - gnome-screenshot
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"

@@ -1,0 +1,6 @@
+---
+- name: Xmodmap [1/1] - Copy configuration files
+  ansible.builtin.copy:
+    src: files/xmodmap/
+    dest: ~/
+    mode: "0644"

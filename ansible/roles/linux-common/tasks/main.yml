@@ -1,0 +1,38 @@
+---
+- name: Upgrade OS (Debian)
+  block:
+    - name: Upgrade OS with apt module
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        update_cache: true
+      become: true
+      when: ansible_os_family == "Debian"
+  rescue:
+    - name: Upgrade OS with shell command
+      ansible.builtin.shell: apt upgrade -y
+      become: true
+      ignore_errors: true
+
+- name: Upgrade OS (RedHat)
+  block:
+    - name: Update OS with dnf module
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
+      become: true
+      when: ansible_os_family == "RedHat"
+  rescue:
+    - name: Upgrade OS (RedHat) - Retry
+      ansible.builtin.shell: dnf upgrade -y
+      become: true
+      ignore_errors: true
+
+- name: Configure terminal
+  ansible.builtin.include_role:
+    name: linux-terminal
+
+- name: Configure desktop environment
+  ansible.builtin.include_role:
+    name: linux-ui

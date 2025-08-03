@@ -1,0 +1,26 @@
+---
+- name: feh [1/3] - Install (Debian)
+  ansible.builtin.apt:
+    name: feh
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: feh [1/3] - Install (RedHat)
+  ansible.builtin.dnf:
+    name: feh
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
+
+- name: feh [2/3] - Ensure required paths exist
+  ansible.builtin.file:
+    path: ~/Pictures/wallpapers
+    state: directory
+
+- name: feh [3/3] - Add default background
+  ansible.builtin.copy:
+    src: files/feh/Izzet_Wallpaper_2560x1440.jpg
+    dest: ~/Pictures/wallpapers/izzet.jpg
+    mode: "0644"
+  ignore_errors: true

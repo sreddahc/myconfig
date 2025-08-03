@@ -1,0 +1,7 @@
+---
+- name: Terminal [1/1] - Install (RedHat)
+  ansible.builtin.dnf:
+    name: gnome-terminal
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"

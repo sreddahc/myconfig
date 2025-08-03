@@ -1,0 +1,24 @@
+---
+- name: Bash [1/3] - Create bashrc plugin folder
+  ansible.builtin.file:
+    path: ~/.bashrc.d
+    state: directory
+  
+- name: Bash [2/3] - Add config to .bashrc
+  ansible.builtin.blockinfile:
+    path: ~/.bashrc
+    create: true
+    state: present
+    append_newline: true
+    prepend_newline: true
+    block: |
+      # myconfig - bashrc customisations
+      for file in ~/.bashrc.d/*.bashrc; do
+        source "$file"
+      done
+  when: ansible_os_family == "Debian"
+
+- name: Bash [3/3] - Copy bashrc plugins
+  ansible.builtin.copy:
+    src: files/bash/
+    dest: ~/.bashrc.d/

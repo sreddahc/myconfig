@@ -1,0 +1,14 @@
+---
+- name: Powerline fonts [1/1] - Install (Debian)
+  ansible.builtin.apt:
+    name: fonts-powerline
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Powerline fonts [1/1] - Install (RedHat)
+  ansible.builtin.dnf:
+    name: powerline-fonts
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
