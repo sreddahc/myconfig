@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to setup a system how I like to use it.
 
@@ -17,5 +17,9 @@ if [ $(cat /etc/os-release | grep ^ID | cut -f 2 -d "=") = "ubuntu" ]; then
 fi
 pipx ensurepath
 
+# Install Ansible
+pipx install --include-deps ansible
+
 # Run Ansible
-sh .install_with_ansible.sh
+cd ./ansible
+ansible-playbook site.yml --ask-become-pass
