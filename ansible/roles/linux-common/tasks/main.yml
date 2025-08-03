@@ -1,12 +1,16 @@
 ---
-- name: Update software cache (Debian)
+- name: Upgrade OS (Debian)
   ansible.builtin.apt:
+    upgrade: 
+    state: latest
     update_cache: true
   become: true
   when: ansible_os_family == "Debian"
 
-- name: Update software cache (RedHat)
+- name: Upgrade OS (RedHat)
   ansible.builtin.dnf:
+    name: "*"
+    state: latest
     update_cache: true
   become: true
   when: ansible_os_family == "RedHat"
