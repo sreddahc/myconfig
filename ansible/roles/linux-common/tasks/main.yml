@@ -1,7 +1,7 @@
 ---
 - name: Upgrade OS (Debian)
   ansible.builtin.apt:
-    upgrade: 
+    name: "*"
     state: latest
     update_cache: true
   become: true
