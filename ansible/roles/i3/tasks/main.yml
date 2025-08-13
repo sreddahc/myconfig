@@ -5,6 +5,7 @@
     state: present
   become: true
   when: ansible_os_family == "Debian"
+  register: i3_debian
 
 - name: i3 [1/4] - Install (Red Hat)
   ansible.builtin.dnf:
@@ -14,23 +15,27 @@
     state: present
   become: true
   when: ansible_os_family == "RedHat"
+  register: i3_redhat
 
 - name: i3 [2/4] - Ensure required paths exist
   ansible.builtin.file:
     path: ~/.config/i3
     state: directory
+  when: (i3_debian is changed) or (i3_redhat is changed)
 
 - name: i3 [3/4] - Copy configuration files
   ansible.builtin.copy:
     src: files/
     dest: ~/.config/i3/
     mode: "0644"
+  when: (i3_debian is changed) or (i3_redhat is changed)
 
 - name: i3 [4/4] - Update file permissions
   ansible.builtin.file:
     path: ~/.config/i3/scripts/
     mode: "0755"
     recurse: true
+  when: (i3_debian is changed) or (i3_redhat is changed)
 
 - name: i3 - Additional software
   ansible.builtin.include_tasks: additional-software.yml
