@@ -36,13 +36,17 @@
   ansible.builtin.include_tasks: additional-software
 
 - name: i3 - Top bar
-  ansible.builtin.include_role: polybar
+  ansible.builtin.include_role:
+    name: polybar
 
 - name: i3 - Compositor
-  ansible.builtin.include_role: picom
+  ansible.builtin.include_role:
+    name: picom
 
 - name: i3 - Wallpaper
-  ansible.builtin.include_role: feh
+  ansible.builtin.include_role:
+    name: feh
 
 - name: i3 - Notifications
-  ansible.builtin.include_role: dunst
+  ansible.builtin.include_role:
+    name: dunst
