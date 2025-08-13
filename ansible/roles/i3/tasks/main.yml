@@ -33,7 +33,7 @@
     recurse: true
 
 - name: i3 - Additional software
-  ansible.builtin.include_tasks: additional-software
+  ansible.builtin.include_tasks: additional-software.yml
 
 - name: i3 - Top bar
   ansible.builtin.include_role:
