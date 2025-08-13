@@ -6,7 +6,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: vim [1/2] - Install (RedHat)
+- name: vim [1/2] - Install (Red Hat)
   ansible.builtin.dnf:
     name: vim
     state: present
@@ -15,6 +15,6 @@
 
 - name: vim [2/2] - Copy configuration files
   ansible.builtin.copy:
-    src: files/vim/
+    src: files/
     dest: ~/
     mode: "0644"

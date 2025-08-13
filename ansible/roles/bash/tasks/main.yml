@@ -20,5 +20,5 @@
 
 - name: Bash [3/3] - Copy bashrc plugins
   ansible.builtin.copy:
-    src: files/bash/
+    src: files/
     dest: ~/.bashrc.d/

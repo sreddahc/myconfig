@@ -6,7 +6,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: picom [1/3] - Install (RedHat)
+- name: picom [1/3] - Install (Red Hat)
   ansible.builtin.dnf:
     name: picom
     state: present
@@ -20,6 +20,6 @@
 
 - name: picom [3/3] - Configure
   ansible.builtin.copy:
-    src: files/picom/
+    src: files/
     dest: ~/.config/picom/
     mode: "0644"

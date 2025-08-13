@@ -6,7 +6,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: Powerline fonts [1/1] - Install (RedHat)
+- name: Powerline fonts [1/1] - Install (Red Hat)
   ansible.builtin.dnf:
     name: powerline-fonts
     state: present

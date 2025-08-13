@@ -6,7 +6,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: i3 [1/4] - Install (RedHat)
+- name: i3 [1/4] - Install (Red Hat)
   ansible.builtin.dnf:
     name:
       - gnome-session-xsession
@@ -22,7 +22,7 @@
 
 - name: i3 [3/4] - Copy configuration files
   ansible.builtin.copy:
-    src: files/i3/
+    src: files/
     dest: ~/.config/i3/
     mode: "0644"
 
@@ -45,4 +45,4 @@
   ansible.builtin.include_tasks: dunst.yml
 
 - name: i3 - Additional software
-  ansible.builtin.include_tasks: i3-additional-software.yml
+  ansible.builtin.include_tasks: additional-software.yml

@@ -6,7 +6,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: Polybar [1/5] - Install (RedHat)
+- name: Polybar [1/5] - Install (Red Hat)
   ansible.builtin.dnf:
     name: polybar
     state: present
@@ -20,7 +20,7 @@
 
 - name: Polybar [3/5] - Configure
   ansible.builtin.copy:
-    src: files/polybar/
+    src: files/
     dest: ~/.config/polybar/
     mode: "0644"
 

@@ -6,7 +6,7 @@
 
 - name: Nerd Fonts [2/2] - Find font files
   ansible.builtin.unarchive:
-    src: files/nerdfonts/NerdFontsSymbolsOnly.zip
+    src: files/NerdFontsSymbolsOnly.zip
     dest: ~/.local/share/fonts
     exclude:
       - LICENSE
