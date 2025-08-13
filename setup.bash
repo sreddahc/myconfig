@@ -25,4 +25,4 @@ pipx install --include-deps ansible
 
 # Run Ansible
 cd ./ansible
-ansible-playbook site.yml --ask-become-pass
+ansible-playbook playbooks/i3-desktop.yml --ask-become-pass

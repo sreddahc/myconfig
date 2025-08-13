@@ -1,10 +1,10 @@
 ---
-- hosts: all
+- name: Linux with i3
+  hosts: all
   gather_facts: true
   tasks:
-
   - name: Setup environment - Linux
     ansible.builtin.include_role:
-      name: linux-common
+      name: i3
     when: (ansible_os_family == "Debian") or
           (ansible_os_family == "RedHat")
