@@ -5,6 +5,7 @@
     state: present
   become: true
   when: ansible_os_family == "Debian"
+  register: polybar_debian
 
 - name: Polybar [1/5] - Install (Red Hat)
   ansible.builtin.dnf:
@@ -12,22 +13,27 @@
     state: present
   become: true
   when: ansible_os_family == "RedHat"
+  register: polybar_redhat
 
 - name: Polybar [2/5] - Ensure required paths exist
   ansible.builtin.file:
     path: ~/.config/polybar
     state: directory
+  when: (polybar_debian.changed == true) or (polybar_redhat.changed == true)
 
 - name: Polybar [3/5] - Configure
   ansible.builtin.copy:
     src: files/
     dest: ~/.config/polybar/
     mode: "0644"
+  when: (polybar_debian.changed == true) or (polybar_redhat.changed == true)
 
 - name: Polybar [4/5] - Update file permissions
   ansible.builtin.file:
     path: ~/.config/polybar/launch.sh
     mode: "0755"
+  when: (polybar_debian.changed == true) or (polybar_redhat.changed == true)
 
 - name: Polybar [5/5] - [Optional] Install Font
-  ansible.builtin.include_tasks: nerdfonts.yml
+  ansible.builtin.include_role:
+    name: nerdfonts

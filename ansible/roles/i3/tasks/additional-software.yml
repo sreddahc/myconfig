@@ -11,7 +11,7 @@
   become: true
   when: ansible_os_family == "Debian"
 
-- name: i3 additional software [1/1] - Install (RedHat)
+- name: i3 additional software [1/1] - Install (Red Hat)
   ansible.builtin.dnf:
     name:
       - thunar
