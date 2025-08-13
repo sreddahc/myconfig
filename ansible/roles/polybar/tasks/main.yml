@@ -19,20 +19,20 @@
   ansible.builtin.file:
     path: ~/.config/polybar
     state: directory
-  when: (polybar_debian.changed == true) or (polybar_redhat.changed == true)
+  when: (polybar_debian is changed) or (polybar_redhat is changed)
 
 - name: Polybar [3/5] - Configure
   ansible.builtin.copy:
     src: files/
     dest: ~/.config/polybar/
     mode: "0644"
-  when: (polybar_debian.changed == true) or (polybar_redhat.changed == true)
+  when: (polybar_debian is changed) or (polybar_redhat is changed)
 
 - name: Polybar [4/5] - Update file permissions
   ansible.builtin.file:
     path: ~/.config/polybar/launch.sh
     mode: "0755"
-  when: (polybar_debian.changed == true) or (polybar_redhat.changed == true)
+  when: (polybar_debian is changed) or (polybar_redhat is changed)
 
 - name: Polybar [5/5] - [Optional] Install Font
   ansible.builtin.include_role:
