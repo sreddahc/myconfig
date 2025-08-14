@@ -1,8 +1,7 @@
 ---
-- name: Bash 1/3 - Already done?
-  ansible.builtin.file:
+- name: Bash - Check if already setup
+  ansible.builtin.stat:
     path: ~/.myconfig/bash
-    state: file
   register: role_bash_state
 
 - name: Debug
@@ -13,7 +12,8 @@
   ansible.builtin.file:
     path: ~/.bashrc.d
     state: directory
-  
+  when: role_bash_state.stat.exists is false
+
 - name: Bash [2/3] - Add config to .bashrc
   ansible.builtin.blockinfile:
     path: ~/.bashrc
@@ -26,9 +26,18 @@
       for file in ~/.bashrc.d/*.bashrc; do
         source "$file"
       done
-  when: ansible_os_family == "Debian"
+  when:
+    - ansible_os_family == "Debian"
+    - role_bash_state.stat.exists is false
 
 - name: Bash [3/3] - Copy bashrc plugins
   ansible.builtin.copy:
     src: files/
     dest: ~/.bashrc.d/
+  when: role_bash_state.stat.exists is false
+
+- name: Bash - Finalising
+  ansible.builtin.file:
+    path: ~/.myconfig/bash
+    state: touch
+  when: role_bash_state.stat.exists is false
