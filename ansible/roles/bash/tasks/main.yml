@@ -1,5 +1,5 @@
 ---
-- name: Bash - Check if already setup
+- name: Bash - Already completed?
   ansible.builtin.stat:
     path: ~/.myconfig/bash
   register: role_bash_state
@@ -36,8 +36,11 @@
     dest: ~/.bashrc.d/
   when: role_bash_state.stat.exists is false
 
-- name: Bash - Finalising
+- name: Bash - Mark as complete
   ansible.builtin.file:
-    path: ~/.myconfig/bash
-    state: touch
+    path: {{ item.path }}
+    state: {{ item.state }}
+  loop:
+    - { path: ~/.myconfig, state: directory }
+    - { path: ~/.myconfig/bash, state: touch }
   when: role_bash_state.stat.exists is false
