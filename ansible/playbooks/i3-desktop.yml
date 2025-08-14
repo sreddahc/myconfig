@@ -52,5 +52,5 @@
     become: true
     when: ansible_os_family == "RedHat"
 
-  - name: Setup terminal
-    ansible.builtin.import_playbook: terminal.yml
+- name: Setup terminal
+  ansible.builtin.import_playbook: terminal.yml
