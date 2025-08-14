@@ -1,10 +1,56 @@
 ---
-- name: Linux with i3
+- name: i3 Desktop
   hosts: all
   gather_facts: true
   tasks:
-  - name: Setup environment - Linux
+  - name: i3
     ansible.builtin.include_role:
       name: i3
-    when: (ansible_os_family == "Debian") or
-          (ansible_os_family == "RedHat")
+
+  - name: Top bar
+    ansible.builtin.include_role:
+      name: polybar
+
+  - name: Gnome Terminal
+    ansible.builtin.include_role:
+      name: gnome-terminal
+
+  - name: Notifications
+    ansible.builtin.include_role:
+      name: dunst
+
+  - name: Compositor
+    ansible.builtin.include_role:
+      name: picom
+
+  - name: Wallpaper
+    ansible.builtin.include_role:
+      name: feh
+
+  - name: Xmodmap
+    ansible.builtin.include_role:
+      name: xmodmap
+
+  - name: Additional software [1/1] - Install (Debian)
+    ansible.builtin.apt:
+      name:
+        - thunar
+        - xfce4-settings
+        - gnome-screenshot
+      state: present
+      install_recommends: false
+    become: true
+    when: ansible_os_family == "Debian"
+
+  - name: Additional software [1/1] - Install (Red Hat)
+    ansible.builtin.dnf:
+      name:
+        - thunar
+        - xfce4-settings
+        - gnome-screenshot
+      state: present
+    become: true
+    when: ansible_os_family == "RedHat"
+
+  - name: Setup terminal
+    ansible.builtin.import_playbook: terminal.yml

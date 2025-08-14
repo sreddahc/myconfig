@@ -1,0 +1,20 @@
+---
+- name: Terminal
+  hosts: all
+  gather_facts: true
+  tasks:
+  - name: bash
+    ansible.builtin.include_role:
+      name: bash
+
+  - name: vim
+    ansible.builtin.include_role:
+      name: vim
+
+  - name: tmux
+    ansible.builtin.include_role:
+      name: tmux
+
+  - name: Powerline fonts
+    ansible.builtin.include_role:
+      name: powerline-fonts

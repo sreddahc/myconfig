@@ -36,22 +36,3 @@
     mode: "0755"
     recurse: true
   when: (i3_debian is changed) or (i3_redhat is changed)
-
-- name: i3 - Additional software
-  ansible.builtin.include_tasks: additional-software.yml
-
-- name: i3 - Top bar
-  ansible.builtin.include_role:
-    name: polybar
-
-- name: i3 - Compositor
-  ansible.builtin.include_role:
-    name: picom
-
-- name: i3 - Wallpaper
-  ansible.builtin.include_role:
-    name: feh
-
-- name: i3 - Notifications
-  ansible.builtin.include_role:
-    name: dunst
