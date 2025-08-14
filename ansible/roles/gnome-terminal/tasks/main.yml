@@ -13,17 +13,22 @@
   become: true
   when: ansible_os_family == "RedHat"
 
+# # This requires the community.general module. Off for now.
+# - name: Gnome terminal [2/2] - Get profile UUIDs
+#   community.general.dconf:
+#     key: "/org/gnome/terminal/legacy/profiles:/"
+#     state: read
+#   register: gnome_terminal_profiles
 
-- name: Gnome terminal [2/2] - Get profile UUIDs
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/"
-    state: read
-  register: gnome_terminal_profiles
-
-- name: Show them
-  debug:
-    msg: "{{ gnome_terminal_profiles }}"
-
-# - name: Gnome terminal [2/2] - Turn off bell
-#   dconf:
-  
+# [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9] appears to be consistent among builds
+- name: Gnome terminal [1/2] - Configure (Optional)
+  ansible.builtin.shell: |
+    dconf load /org/gnome/terminal/legacy/profiles:/ <<EOF
+    [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+    audible-bell=false
+    background-color='rgb(0,0,0)'
+    foreground-color='rgb(255,255,255)'
+    scrollbar-policy='never'
+    use-theme-colors=false
+    EOF
+  ignore-errors: true
