@@ -1,7 +1,29 @@
 ---
-- name: Terminal [1/1] - Install (RedHat)
+- name: Gnome terminal [1/2] - Install (Debian)
+  ansible.builtin.apt:
+    name: gnome-terminal
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Gnome terminal [1/2] - Install (Red Hat)
   ansible.builtin.dnf:
     name: gnome-terminal
     state: present
   become: true
   when: ansible_os_family == "RedHat"
+
+
+- name: Gnome terminal [2/2] - Get profile UUIDs
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/"
+    state: read
+  register: gnome_terminal_profiles
+
+- name: Show them
+  debug:
+    msg: "{{ gnome_terminal_profiles }}"
+
+# - name: Gnome terminal [2/2] - Turn off bell
+#   dconf:
+  
